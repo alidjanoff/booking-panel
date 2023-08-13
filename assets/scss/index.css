@@ -1,0 +1,399 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #8e53e4 0%, #4b22b9 100%);
+}
+
+.row {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+#staff .staffCard {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 22px;
+  background-color: #fff;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+#staff .staffCard:hover {
+  border-color: #53d56c;
+}
+#staff .staffCard.selected {
+  border-color: #53d56c;
+}
+#staff .staffCard .doctorImg {
+  width: 50px;
+  height: 50px;
+}
+#staff .staffCard .doctorImg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#staff .staffCard .staffCardInfo .doctorName {
+  color: #292d32;
+  font-size: 14px;
+  font-weight: 500;
+}
+#staff .staffCard .staffCardInfo .doctorEmail {
+  color: #828f9a;
+  font-size: 12px;
+}
+
+#services .serviceCard {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 22px;
+  background-color: #fff;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+#services .serviceCard:hover {
+  border: 2px solid #53d56c;
+}
+#services .serviceCard.active {
+  border: 2px solid #53d56c;
+}
+#services .serviceCard .serviceInfo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#services .serviceCard .serviceInfo .info .serviceName {
+  color: #292d32;
+  font-size: 14px;
+}
+#services .serviceCard .serviceInfo .info .durationInfo {
+  color: #828f9a;
+  font-size: 12px;
+}
+#services .serviceCard .serviceInfo .servicePrice {
+  color: #4fbf65;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+#confirmation .confirmationTab .pacientInfoForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+#confirmation .confirmationTab .pacientInfoForm .input {
+  width: calc(50% - 20px);
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 5px;
+}
+#confirmation .confirmationTab .pacientInfoForm .input label {
+  color: #292d32;
+  font-size: 14px;
+}
+#confirmation .confirmationTab .pacientInfoForm .input label span {
+  color: #ef264d;
+}
+#confirmation .confirmationTab .pacientInfoForm .input input {
+  border-radius: 2px;
+  border: 1px solid #e3eaf3;
+  background: #fff;
+  padding: 10px;
+}
+#confirmation .confirmationTab .pacientInfoForm .input input:focus {
+  outline-color: #53d56c;
+}
+#confirmation .confirmationTab .note {
+  margin: 8px 0;
+  color: #292d32;
+  font-size: 14px;
+}
+#confirmation .confirmationTab .infoBox {
+  padding: 19px 26px;
+  background-color: #fff;
+}
+#confirmation .confirmationTab .infoBox .infoList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+#confirmation .confirmationTab .infoBox .infoList .infoItem {
+  color: #111;
+  font-size: 14px;
+}
+#confirmation .confirmationTab .infoBox .infoList .infoItem.price {
+  color: #4fbf65;
+  font-weight: 500;
+}
+#confirmation .confirmationTab .infoBox .infoList .infoItem span {
+  color: #6c70dc;
+}
+
+.homeSection {
+  width: 100%;
+  height: 100dvh;
+  background-image: url(../images/header-bg-shape.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.homeSection .row {
+  justify-content: center;
+  align-items: center;
+}
+.homeSection .row .registerPopUp {
+  width: 100%;
+  height: 100%;
+  max-width: 980px;
+  max-height: 560px;
+  display: flex;
+  background-color: #f5f7fa;
+}
+.homeSection .row .registerPopUp .leftSide {
+  width: 100%;
+  max-width: 230px;
+  padding: 30px;
+  background-color: #292d32;
+}
+.homeSection .row .registerPopUp .leftSide .tabList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+}
+.homeSection .row .registerPopUp .leftSide .tabList .tabItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  color: #626c76;
+  font-size: 14px;
+  cursor: not-allowed;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.homeSection .row .registerPopUp .leftSide .tabList .tabItem .itemNo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #4d545a;
+  font-size: 12px;
+  color: #fff;
+  font-weight: 600;
+}
+.homeSection .row .registerPopUp .leftSide .tabList .tabItem.active {
+  color: #53d56c;
+  cursor: pointer;
+}
+.homeSection .row .registerPopUp .leftSide .tabList .tabItem.active .itemNo {
+  background-color: #53d56c;
+}
+.homeSection .row .registerPopUp .leftSide .tabList .tabItem.done {
+  color: #fff;
+}
+.homeSection .row .registerPopUp .leftSide .tabList .tabItem.done .itemNo {
+  display: none;
+}
+.homeSection .row .registerPopUp .leftSide .tabList .tabItem.done::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6c70dc;
+  background-image: url(../images/check.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.homeSection .row .registerPopUp .rightSide {
+  width: 100%;
+  max-width: 750px;
+}
+.homeSection .row .registerPopUp .rightSide .topBar {
+  width: 100%;
+  border-bottom: 1px solid #e3eaf3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+}
+.homeSection .row .registerPopUp .rightSide .topBar .tabTitle {
+  color: #292d32;
+  font-size: 18px;
+  font-weight: 500;
+}
+.homeSection .row .registerPopUp .rightSide .topBar .closeBtn {
+  width: 14px;
+  height: 14px;
+  background-image: url(../images/close.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.homeSection .row .registerPopUp .rightSide .topBar .closeBtn:hover {
+  filter: invert(100%);
+}
+.homeSection .row .registerPopUp .rightSide .middleBar {
+  width: 100%;
+  height: 415px;
+  padding: 25px 30px;
+  overflow-y: auto;
+}
+.homeSection .row .registerPopUp .rightSide .middleBar .tab {
+  display: none;
+}
+.homeSection .row .registerPopUp .rightSide .middleBar .tab.active {
+  display: block;
+}
+.homeSection .row .registerPopUp .rightSide .bottomBar {
+  width: 100%;
+  border-top: 1px solid #e3eaf3;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.homeSection .row .registerPopUp .rightSide .bottomBar.active {
+  justify-content: space-between;
+}
+.homeSection .row .registerPopUp .rightSide .bottomBar .noValidInfo {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 2px;
+  background: #f4be6c;
+  color: #fff;
+  padding: 9px 14px;
+}
+.homeSection .row .registerPopUp .rightSide .bottomBar .noValidInfo.active {
+  display: flex;
+}
+.homeSection .row .registerPopUp .rightSide .bottomBar .noValidInfo .infoIcon {
+  width: 24px;
+  height: 24px;
+}
+.homeSection .row .registerPopUp .rightSide .bottomBar .noValidInfo .infoIcon img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.homeSection .row .registerPopUp .rightSide .bottomBar .noValidInfo .infoMsg {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.homeSection .row .registerPopUp .rightSide .bottomBar .btn {
+  padding: 9px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+  border: 0;
+  outline: 0;
+  background-color: #6c70dc;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.homeSection .row .registerPopUp .rightSide .bottomBar .btn:hover {
+  opacity: 0.8;
+}
+.homeSection .row .registerPopUp .rightSide .bottomBar .btn.back {
+  border: 1px solid #e3eaf3;
+  background: #f7f8fb;
+  color: #8f9ca7;
+  display: none;
+}
+.homeSection .row .registerPopUp .rightSide .bottomBar .btn.back.active {
+  display: block;
+}
+.homeSection .row .modalBox {
+  width: 100%;
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.6s ease;
+}
+.homeSection .row .modalBox.active {
+  opacity: 1;
+  visibility: visible;
+}
+.homeSection .row .modalBox .popUp {
+  width: 500px;
+  height: 161px;
+  padding: 21px 23px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 17px;
+  border-radius: 8px;
+  background: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100px);
+  transition: all 0.6s ease;
+}
+.homeSection .row .modalBox .popUp.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
+}
+.homeSection .row .modalBox .popUp .closeModal {
+  width: 24px;
+  height: 24px;
+  background-image: url(../images/close.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.homeSection .row .modalBox .popUp .closeModal:hover {
+  filter: invert(100%);
+}
+.homeSection .row .modalBox .popUp .message {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  color: #38cf78;
+}
+.homeSection .row .modalBox .popUp .message.error {
+  color: #f39c12;
+}/*# sourceMappingURL=index.css.map */

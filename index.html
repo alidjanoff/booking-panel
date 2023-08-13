@@ -7,6 +7,96 @@
     <title>Booking Panel</title>
   </head>
   <body>
+    <main>
+      <!--* Start home section -->
+      <section class="homeSection">
+        <div class="row">
+          <div class="registerPopUp">
+            <div class="leftSide">
+              <ul class="tabList">
+                <li class="tabItem active" id="1">
+                  <span class="itemNo">1</span> Staff
+                </li>
+                <li class="tabItem" id="2">
+                  <span class="itemNo">2</span> Services
+                </li>
+                <li class="tabItem" id="3">
+                  <span class="itemNo">3</span> Date & Time
+                </li>
+                <li class="tabItem" id="4">
+                  <span class="itemNo">4</span> Confirmation
+                </li>
+              </ul>
+            </div>
+            <div class="rightSide">
+              <div class="topBar">
+                <h3 class="tabTitle"></h3>
+                <span class="closeBtn"></span>
+              </div>
+              <div class="middleBar">
+                <div class="tab" id="staff"></div>
+                <div class="tab" id="services"></div>
+                <div class="tab" id="dateTime"></div>
+                <div class="tab" id="confirmation">
+                  <div class="confirmationTab">
+                    <form class="pacientInfoForm">
+                      <div class="input">
+                        <label for="name">First name <span>*</span></label>
+                        <input type="text" name="name" id="name" />
+                      </div>
+                      <div class="input">
+                        <label for="surname">Last name <span>*</span></label>
+                        <input type="text" name="surname" id="surname" />
+                      </div>
+                      <div class="input">
+                        <label for="email">E-mail <span>*</span></label>
+                        <input type="email" name="email" id="email" />
+                      </div>
+                      <div class="input">
+                        <label for="phone">Phone <span>*</span></label>
+                        <input type="tel" name="phone" id="phone" />
+                      </div>
+                    </form>
+                    <p class="note">Note</p>
+                    <div class="infoBox">
+                      <ul class="infoList">
+                        <li class="infoItem">
+                          <span>Staff:</span> Alexy Rosetta
+                        </li>
+                        <li class="infoItem">
+                          <span>Service:</span> Oral hygiene
+                        </li>
+                        <li class="infoItem">
+                          <span>Date:</span> 2022-03-04 / 09:30-10:00
+                        </li>
+                        <li class="infoItem price"><span>Price:</span> 123$</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bottomBar">
+                <button class="btn back">Back</button>
+                <div class="noValidInfo">
+                  <div class="infoIcon">
+                    <img src="./assets/images/info.svg" alt="info-icon" />
+                  </div>
+                  <p class="infoMsg">Select staff</p>
+                </div>
+                <button class="btn next">Next</button>
+              </div>
+            </div>
+          </div>
+          <div class="modalBox" onclick="closePopUp()">
+            <div class="popUp">
+              <span class="closeModal" onclick="closePopUp()"></span>
+              <p class="message">Confirmation successfully completed!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--* End home section -->
+    </main>
     <script src="./assets/js/app.js"></script>
   </body>
 </html>

@@ -1,0 +1,59 @@
+// border: 2px solid #53d56c;
+#confirmation {
+  .confirmationTab {
+    .pacientInfoForm {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      .input {
+        width: calc(50% - 20px);
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+        margin-bottom: 5px;
+        label {
+          color: #292d32;
+          font-size: 14px;
+          span {
+            color: #ef264d;
+          }
+        }
+        input {
+          border-radius: 2px;
+          border: 1px solid #e3eaf3;
+          background: #fff;
+          padding: 10px;
+          &:focus {
+            outline-color: #53d56c;
+          }
+        }
+      }
+    }
+    .note {
+      margin: 8px 0;
+      color: #292d32;
+      font-size: 14px;
+    }
+    .infoBox {
+      padding: 19px 26px;
+      background-color: #fff;
+      .infoList {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        .infoItem {
+          color: #111;
+          font-size: 14px;
+          &.price {
+            color: #4fbf65;
+            font-weight: 500;
+          }
+          span {
+            color: #6c70dc;
+          }
+        }
+      }
+    }
+  }
+}

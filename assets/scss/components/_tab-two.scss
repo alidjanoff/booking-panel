@@ -1,0 +1,41 @@
+#services {
+  .serviceCard {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 22px;
+    background-color: #fff;
+    border: 2px solid transparent;
+    transition: 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 10px;
+    &:hover {
+      border: 2px solid #53d56c;
+    }
+    &.active {
+      border: 2px solid #53d56c;
+    }
+    .serviceInfo {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .info {
+        .serviceName {
+          color: #292d32;
+          font-size: 14px;
+        }
+        .durationInfo {
+          color: #828f9a;
+          font-size: 12px;
+        }
+      }
+      .servicePrice {
+        color: #4fbf65;
+        font-size: 26px;
+        font-weight: 500;
+      }
+    }
+  }
+}
