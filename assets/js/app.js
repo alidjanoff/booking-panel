@@ -71,6 +71,20 @@ const tabTitles = [
 ];
 //! Fake DB
 
+//! Will be returning object
+let reservationData = {
+  staff_id: 1,
+  service_id: 1,
+  date: "",
+  time: "",
+  customer: {
+    name: "",
+    surname: "",
+    email: "",
+    phone: "",
+  },
+};
+
 // Let's coding
 const staffTab = document.querySelector("#staff");
 const servicesTab = document.querySelector("#services");
@@ -183,7 +197,7 @@ function getStaffData() {
   staffTab.innerHTML = "";
   staffDb.map((data) => {
     staffTab.innerHTML += `
-    <div class="staffCard" key="${data.id}" id="${data.id}">
+    <div class="staffCard" key="${data.id}" id="${data.id}" onclick="selectStaff(id)">
     <div class="doctorImg">
       <img
         src="${data.image}"
@@ -203,7 +217,7 @@ function getServiceData() {
   servicesTab.innerHTML = "";
   servicesDb.map((data) => {
     servicesTab.innerHTML += `
-    <div class="serviceCard" id="${data.id}" key="${data.id}">
+    <div class="serviceCard" id="${data.id}" key="${data.id}" onclick="selectService(id)">
     <div class="serviceImg">
       <img src="${data.image}" alt="${data.name}" />
     </div>
@@ -228,6 +242,7 @@ nextBtn.addEventListener("click", () => {
       tab = "dateTime";
       step = 3;
     } else if (step === 3) {
+      autoFillSelectedData();
       nextBtn.innerText = "Confirm Booking";
       tab = "confirmation";
       step = 4;
@@ -251,7 +266,6 @@ prevBtn.addEventListener("click", () => {
     step = step - 1;
   }
   checkTab();
-  console.log(step);
 });
 
 function openPopUp() {
@@ -263,4 +277,51 @@ function closePopUp() {
   popUp.addEventListener("click", (e) => e.stopPropagation());
   modalBox.classList.remove("active");
   popUp.classList.remove("active");
+}
+
+const staffCards = document.querySelectorAll(".staffCard");
+
+function selectStaff(staffId) {
+  staffCards.forEach((item) => {
+    if (item.id === staffId) {
+      item.classList.add("selected");
+      reservationData.staff_id = Number(staffId);
+      tab = "services";
+      step = 2;
+      checkTab();
+    } else {
+      item.classList.remove("selected");
+    }
+  });
+}
+
+const serviceCards = document.querySelectorAll(".serviceCard");
+
+function selectService(serviceId) {
+  serviceCards.forEach((item) => {
+    if (item.id === serviceId) {
+      item.classList.add("active");
+      reservationData.service_id = Number(serviceId);
+      tab = "dateTime";
+      step = 3;
+      checkTab();
+    } else {
+      item.classList.remove("active");
+    }
+  });
+}
+
+function autoFillSelectedData() {
+  let staffData = staffDb.find((item) => item.id === reservationData.staff_id);
+  let serviceData = servicesDb.find(
+    (item) => item.id === reservationData.service_id
+  );
+
+  let staff = document.querySelector(".staff");
+  let service = document.querySelector(".service");
+  let date = document.querySelector(".date");
+  let price = document.querySelector(".price");
+  staff.innerHTML = `<span>Staff:</span> ${staffData.name}`;
+  service.innerHTML = `<span>Service:</span> ${serviceData.name}`;
+  price.innerHTML = `<span>Price:</span> ${serviceData.price}$`;
 }
