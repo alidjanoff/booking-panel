@@ -38,14 +38,18 @@ const servicesDb = [
   },
 ];
 
-const dateDb = ["2022-03-04", "2022-03-05", "2022-03-06"];
+const dateDbs = ["2023-08-04", "2023-08-05", "2023-08-06"];
+
+const dateDb = [4, 5, 6];
 
 const timeDb = [
   {
+    id: 1,
     start_time: "09:00",
     end_time: "09:30",
   },
   {
+    id: 2,
     start_time: "09:30",
     end_time: "10:00",
   },
@@ -76,7 +80,10 @@ let reservationData = {
   staff_id: 1,
   service_id: 1,
   date: "",
-  time: "",
+  time: {
+    start_time: "",
+    end_time: "",
+  },
   customer: {
     name: "",
     surname: "",
@@ -319,9 +326,173 @@ function autoFillSelectedData() {
 
   let staff = document.querySelector(".staff");
   let service = document.querySelector(".service");
-  let date = document.querySelector(".date");
+  let date = document.querySelector("#date");
   let price = document.querySelector(".price");
   staff.innerHTML = `<span>Staff:</span> ${staffData.name}`;
   service.innerHTML = `<span>Service:</span> ${serviceData.name}`;
   price.innerHTML = `<span>Price:</span> ${serviceData.price}$`;
+  date.innerHTML = `<span>Date:</span> ${reservationData.date} / ${reservationData.time.start_time}-${reservationData.time.end_time}`;
+}
+
+//! CALENDAR
+const monthName = document.querySelector(".monthName");
+const fullMonth = document.querySelector(".fullMonth");
+const daysBox = document.querySelector(".days");
+const prevMonthBtn = document.querySelector(".prevMonth");
+const nextMonthBtn = document.querySelector(".nextMonth");
+
+let date = new Date();
+const TOTAL_DAYS_VISIBLE = 42;
+
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+function createCalendar(date) {
+  // Find the amount of days from the last, current and next month to show on the calendar
+  const prev = getLastDate(date.getFullYear(), date.getMonth(), true);
+  const curr = getLastDate(date.getFullYear(), date.getMonth() + 1);
+  const next = TOTAL_DAYS_VISIBLE - (prev.days + curr);
+
+  // Firstly, clear the date list
+  daysBox.innerHTML = "";
+
+  // Fill previous days on the calendar
+  for (let i = prev.date - prev.days + 1; i <= prev.date; i++) {
+    daysBox.innerHTML += `
+      <div class="day hidden">${i}</div>
+    `;
+  }
+
+  // Fill current days on the calendar
+  for (let i = 1; i <= curr; i++) {
+    // Check if the day is today
+    if (date.getDate() === i) {
+      daysBox.innerHTML += `
+      <div class="day">${i}</div>
+      `;
+    } else {
+      daysBox.innerHTML += `
+      <div class="day">${i}</div>
+      `;
+    }
+  }
+
+  // Fill next days on the calendar
+  for (let i = 1; i <= next; i++) {
+    daysBox.innerHTML += `
+    <div class="day hidden">${i}</div>
+    `;
+  }
+
+  // Update current month & year
+  monthName.innerText = `${months[date.getMonth()]}, ${date.getFullYear()}`;
+  aviableDates();
+}
+
+// Previous month
+function prevMonth() {
+  date = new Date(date.getFullYear(), date.getMonth() - 1, date.getDate());
+
+  createCalendar(date);
+}
+
+// Next month
+function nextMonth() {
+  date = new Date(date.getFullYear(), date.getMonth() + 1, date.getDate());
+
+  createCalendar(date);
+}
+
+prevMonthBtn.addEventListener("click", () => prevMonth());
+nextMonthBtn.addEventListener("click", () => nextMonth());
+
+// Helper function - Get last date of the previous month
+function getLastDate(year, month, withDay = false) {
+  if (withDay) {
+    return {
+      date: new Date(year, month, 0).getDate(),
+      days: new Date(year, month, 0).getDay(),
+    };
+  }
+
+  return new Date(year, month, 0).getDate();
+}
+
+// Event Listeners
+document.addEventListener("DOMContentLoaded", () => createCalendar(date));
+
+function aviableDates() {
+  const allDays = document.querySelectorAll(".day");
+  allDays.forEach((item) => {
+    if (!item.className.includes("hidden")) {
+      dateDb.map((aviableDay) => {
+        if (Number(item.innerHTML) === aviableDay) {
+          item.classList.add("aviableDay");
+          item.setAttribute("onclick", "selectDay(id)");
+          item.id = aviableDay;
+        }
+      });
+    }
+  });
+}
+
+function selectDay(dayId) {
+  const aviableDays = document.querySelectorAll(".aviableDay");
+  aviableDays.forEach((day) => {
+    if (day.id === dayId) {
+      day.classList.add("selectedDay");
+      dateDbs.filter((item) => {
+        if (item.slice(-2).includes(dayId)) {
+          document.querySelector("#title").innerHTML = item;
+          reservationData.date = item;
+          timeMap();
+        }
+      });
+    } else {
+      day.classList.remove("selectedDay");
+    }
+  });
+}
+
+function timeMap() {
+  let timesBox = document.querySelector(".times");
+  timesBox.innerHTML = "";
+  timeDb.map((time) => {
+    timesBox.innerHTML += `
+    <div class="clock" id="${time.id}" onclick="selectTime(id)">
+      <p class="startTime">${time.start_time}</p>
+      <p class="endTime">${time.end_time}</p>
+    </div>
+    `;
+  });
+}
+
+function selectTime(timeId) {
+  let clocks = document.querySelectorAll(".clock");
+  clocks.forEach((item) => {
+    if (item.id == timeId) {
+      item.classList.add("selectedTime");
+      let time = timeDb.find((time) => time.id == timeId);
+      reservationData.time.start_time = time.start_time;
+      reservationData.time.end_time = time.end_time;
+      tab = "confirmation";
+      step = 4;
+      autoFillSelectedData();
+      checkTab();
+    } else {
+      item.classList.remove("selectedTime");
+    }
+  });
 }

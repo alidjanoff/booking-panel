@@ -36,7 +36,46 @@
               <div class="middleBar">
                 <div class="tab" id="staff"></div>
                 <div class="tab" id="services"></div>
-                <div class="tab" id="dateTime"></div>
+                <div class="tab" id="dateTime">
+                  <div class="row">
+                    <div class="calendar">
+                      <div class="month">
+                        <div class="date">
+                          <span class="prevMonth"><</span>
+                          <h4 class="monthName">
+                            August
+                            <p class="fullMonth">2023</p>
+                          </h4>
+                          <span class="nextMonth">></span>
+                        </div>
+                      </div>
+                      <div class="weekDays">
+                        <div class="weekDay">Mon</div>
+                        <div class="weekDay">Tue</div>
+                        <div class="weekDay">Wed</div>
+                        <div class="weekDay">Thu</div>
+                        <div class="weekDay">Fri</div>
+                        <div class="weekDay">Sat</div>
+                        <div class="weekDay">Sun</div>
+                      </div>
+                      <div class="days"></div>
+                    </div>
+                    <div class="time">
+                      <div class="timeHeader">
+                        <h4>Time</h4>
+                      </div>
+                      <div class="timeBox">
+                        <h5 class="title" id="title">Select date</h5>
+                      </div>
+                      <div class="times">
+                        <!-- <div class="clock">
+                          <p class="startTime">09:00</p>
+                          <p class="endTime">09:30</p>
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div class="tab" id="confirmation">
                   <div class="confirmationTab">
                     <form class="pacientInfoForm">
@@ -60,16 +99,10 @@
                     <p class="note">Note</p>
                     <div class="infoBox">
                       <ul class="infoList">
-                        <li class="infoItem staff">
-                          <span>Staff:</span> Alexy Rosetta
-                        </li>
-                        <li class="infoItem service">
-                          <span>Service:</span> Oral hygiene
-                        </li>
-                        <li class="infoItem date">
-                          <span>Date:</span> 2022-03-04 / 09:30-10:00
-                        </li>
-                        <li class="infoItem price"><span>Price:</span> 123$</li>
+                        <li class="infoItem staff"></li>
+                        <li class="infoItem service"></li>
+                        <li class="infoItem" id="date"></li>
+                        <li class="infoItem price"></li>
                       </ul>
                     </div>
                   </div>
